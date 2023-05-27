@@ -46,16 +46,11 @@ const App = () => {
       rating:8.7
     }
   ]
-  const [movies, setMovies] = useState(details);
-  
+  const [movies, setMovies] = useState(details); 
   const [filterTitle, setFilterTitle] = useState('');// the state variables are used to store the values entered in the filter inputs 
   const [filterRating, setFilterRating] = useState(0);//setFilterTitle and setFilterRating can be used to update the values of these state variables when needed
   
-  const handleFilterChange = (title, rating) => {
-    setFilterTitle(title);
-    setFilterRating(rating);
-  };
-
+ 
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(filterTitle.toLowerCase()) &&
     movie.rating >= parseFloat(filterRating)
@@ -66,11 +61,11 @@ const App = () => {
   
   return (
     <div className="App">
-      <h1>Movie App</h1>
+      <h1>The best movies of all time</h1>
       <Filter
         filterTitle={filterTitle}
-        filterRating={filterRating}
-        handleFilterChange={handleFilterChange}
+       setFilterTitle={setFilterTitle}
+        setFilterRating={setFilterRating}
       />
       <MovieList movies={filteredMovies} />
       <AddMovie addMovie={addMovie} />
